@@ -88,8 +88,8 @@ cleanup sudo umount ${loboot}
 sudo mount ${loroot} ${rootmnt}
 cleanup sudo umount ${loroot}
 
-wget -O latest.tar.gz http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
-cleanup rm latest.tar.gz
+[[ -e latest.tar.gz ]] || wget -O latest.tar.gz http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+#cleanup rm latest.tar.gz
 sudo bsdtar -xpf latest.tar.gz -C ${rootmnt}
 sync
 sudo mv ${rootmnt}/boot/* ${bootmnt}/
