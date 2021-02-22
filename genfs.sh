@@ -93,9 +93,8 @@ cleanup sudo umount ${loroot}
 sudo bsdtar -xpf latest.tar.gz -C ${rootmnt}
 sync
 sudo mv ${rootmnt}/boot/* ${bootmnt}/
-cat << EOF > "${rootmnt}/etc/fstab"
-# <file system> <dir> <type> <options> <dump> <pass>
-/dev/vda1  /boot  vfat  defaults,rw	 0 2
-/dev/vda2  /      ext4  rw,relatime	 0 1
-EOF
+sudo echo "/dev/vda1  /boot  vfat  defaults,rw	 0 2" >> "${rootmnt}/etc/fstab"
+sudo echo "/dev/vda2  /      ext4  rw,relatime	 0 1" >> "${rootmnt}/etc/fstab"
+cp ${bootmnt}/Image .
+cp ${bootmnt}/initramfs-linux.img .
 
