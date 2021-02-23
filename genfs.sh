@@ -72,9 +72,9 @@ sudo mkfs.fat -F 32 ${loboot}
 sudo mkfs.ext4 ${loroot}
 sync
 
-bootmnt=$(mktemp -d -p .)
+bootmnt=$(mktemp -d -p . boot.XXXX)
 cleanup rmdir ${bootmnt}
-rootmnt=$(mktemp -d -p .)
+rootmnt=$(mktemp -d -p . root.XXXX)
 cleanup rmdir ${rootmnt}
 
 assert_dir ${bootmnt}
